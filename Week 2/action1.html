@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple counter</title>
+</head>
+<body>
+
+
+<input id="aNumber" type="number" value=1 >
+
+<button onclick="document.getElementById('aNumber').stepUp(1);">Increase by 1</button>
+<button onclick="stepDown();">Decrease by 1</button>
+
+
+<script>
+function stepDown() {
+    document.getElementById("aNumber").stepDown(1);
+}
+</script>
+
+</body>
+</html>
