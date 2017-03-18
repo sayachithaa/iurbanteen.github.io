@@ -1,0 +1,10 @@
+canvas {
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.buttonControllers{
+    text-align: center;
+    width: 600px;
+}

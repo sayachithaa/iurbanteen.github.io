@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+  <title>Week 3 - Canvas 2</title>
+  <link rel="stylesheet" type="text/css" href="canvas3-2.css" />
+</head>
+<body>
+
+  <h1>Week 3 - Canvas 2</h1>
+  <p>
+    <canvas id="canvas" width="600" height="400"></canvas>
+  </p>
+    <script src="canvas3-2.js"></script>
+    <p class="buttonControllers">
+      <button type="button" onclick="goUp();">Up</button><br/>
+      <button type="button" onclick="goLeft();">Left</button>
+      <button type="button" onclick="goRight();">Right</button><br/>
+      <button type="button" onclick="goDown();">Down</button>
+    </p>
+    <p>Box color: <select id="boxColor" onchange="setColor();">
+        <option selected value="black">Black</option>
+        <option value="blue">Blue</option>
+        <option value="aquamarine">Aquamarine</option>
+        <option value="maroon">Maroon</option>
+      </select></p>
+    <p>Step size: <input id="stepSize" type="number" value="5" onchange="setStepSize(this.value);"></input></p>
+    <p><button type="button" onclick="javascript:reset();">Reset</button></p>
+
+</body>
+</html>
