@@ -29,10 +29,50 @@ function keyEventHandler(event){
       break;
   }
 }
+
+
 function clickMove(button){
-  move(button.id);
+  // Hour 1
+  moveIf(button.id);
+
+  // Hour 3
+  //move(button.id);
 }
 
+
+// Hour 1 - Refactoring
+function moveIf(direction){
+  if(direction == "up"){
+    yOffset = yOffset - stepSize;
+  }
+  if(direction == "down"){
+    yOffset = yOffset + stepSize;
+  }
+  if(direction == "right"){
+    xOffset = xOffset + stepSize;
+  }
+  if(direction == "left"){
+    xOffset = xOffset - stepSize;
+  }
+  draw();
+}
+// Hour 2 - Refactoring
+function moveIf(direction){
+  if(direction == "up"){
+    yOffset = yOffset - stepSize;
+  } else if (direction == "down"){
+    yOffset = yOffset + stepSize;
+  } else if(direction == "right"){
+    xOffset = xOffset + stepSize;
+  } else if(direction == "left"){
+    xOffset = xOffset - stepSize;
+  }
+  draw();
+}
+
+
+// Hour 3 - Refactoring
+// Switch statements, short form mutators
 function move(direction){
   switch(direction){
     case 'up':
