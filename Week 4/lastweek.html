@@ -3,7 +3,7 @@
   <title>Week 3 - Canvas 3</title>
   <link rel="stylesheet" type="text/css" href="default.css" />
 </head>
-<body>
+<body onload="init();">
 
   <h1>Week 3</h1>
   <p>
@@ -11,10 +11,10 @@
   </p>
     <script src="lastweek.js"></script>
     <p class="buttonControllers">
-      <button type="button" onclick="goUp();">Up</button><br/>
-      <button type="button" onclick="goLeft();">Left</button>
-      <button type="button" onclick="goRight();">Right</button><br/>
-      <button type="button" onclick="goDown();">Down</button>
+      <button id="up" type="button" onclick="move('up');">Up</button><br/>
+      <button id="left" type="button" onclick="move('left');">Left</button>
+      <button id="right" type="button" onclick="move('right');">Right</button><br/>
+      <button id="down" type="button" onclick="move('down');">Down</button>
     </p>
     <p>Box color: <select id="boxColor" onchange="setColor();">
         <option selected value="black">Black</option>

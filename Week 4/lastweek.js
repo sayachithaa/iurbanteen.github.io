@@ -10,6 +10,48 @@ var stepCount = 1;
 var boxColor = "black";
 
 drawSquare();
+document.onkeydown = keyEventHandler;
+
+function init(){
+
+}
+
+function keyEventHandler(event){
+  console.log(`Key Code ${event.keyCode}`);
+  if(event.keyCode == 38){ // "Up" key
+    move("up");
+  } else if(event.keyCode == 40){ // "Down" key
+    move("down");
+  } else if(event.keyCode == 37){ // "Left" key
+    move("left");
+  } else if(event.keyCode == 39){ // "Right" key
+    move ("right");
+  }
+}
+// This code was written
+/*
+This function gets by button and moved
+*/
+function move(direction){
+
+   if((yOffset > stepSize) && (direction == "up")){
+      yOffset = yOffset - stepSize;
+   }
+
+   else if (((yOffset + squareHeight + stepSize) < context.canvas.height) &&
+   (direction == "down")){
+     yOffset = yOffset + stepSize;
+   }
+   else if (direction == "left"){
+     xOffset = xOffset - stepSize;
+   }
+   else if (direction == "right"){
+     xOffset = xOffset + stepSize;
+   }
+   empty();
+   drawSquare();
+}
+
 
 function reset(){
   xOffset = 275;
@@ -33,36 +75,13 @@ function drawSquare(){
   context.fillStyle = boxColor;
   context.fillRect(xOffset, yOffset, squareHeight,squareWidth);
 }
-async function goRight(){
-   for(counter = 0; counter < stepCount ; counter = counter + 1){
-     xOffset = xOffset + stepSize;
-     empty();
-     drawSquare();
-     await sleep(100);  // slow it down so we can see it
-   }
- }
- async function goLeft(){
-   for(counter = 0; counter < stepCount ; counter = counter + 1){
-     xOffset = xOffset - stepSize;
-     empty();
-     drawSquare();
-     await sleep(100);  // slow it down so we can see it
-   }
-}
+
+
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
- function goUp(){
-   yOffset = yOffset - stepSize;
-   empty();
-   drawSquare();
- }
- function goDown(){
-   yOffset = yOffset + stepSize;
-   empty();
-   drawSquare();
- }
 
 
 function empty(){
