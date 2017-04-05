@@ -24,6 +24,7 @@ var currentIndex = 0;
 var boxSize = 30;
 var xOffset = 360;
 var yOffset = 500;
+var boingSound;
 
 
 
@@ -36,10 +37,15 @@ $(function(){
   canvas = $('#playfield').get(0);
   context = canvas.getContext('2d');
   document.onkeydown = keyEventHandler;
+  boingSound = new Audio("boing.wav");
 })
+
 
 function keyEventHandler(event){
   switch(event.keyCode){
+    case 38: // up
+      boingSound.play();
+      break;
     case 39: // right key
       move();
       break;
