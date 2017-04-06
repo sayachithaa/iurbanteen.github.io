@@ -5,6 +5,7 @@ var playfield;
 var context;
 var stepSize = 10;
 var boxSize = 20;
+var boxColor = "black";
 
 function init(){
   playfield = document.getElementById('theCanvas');
@@ -31,79 +32,42 @@ function keyEventHandler(event){
 }
 
 
-function clickMove(button){
-  // Hour 1
-  moveIf(button.id);
-
-  // Hour 3
-  //move(button.id);
-}
-
-
-// Hour 1 - Refactoring
-function moveIf(direction){
-  if(direction == "up"){
-    yOffset = yOffset - stepSize;
-  }
-  if(direction == "down"){
-    yOffset = yOffset + stepSize;
-  }
-  if(direction == "right"){
-    xOffset = xOffset + stepSize;
-  }
-  if(direction == "left"){
-    xOffset = xOffset - stepSize;
-  }
-  draw();
-}
-// Hour 2 - Refactoring
-function moveIf(direction){
-  if(direction == "up"){
-    yOffset = yOffset - stepSize;
-  } else if (direction == "down"){
-    yOffset = yOffset + stepSize;
-  } else if(direction == "right"){
-    xOffset = xOffset + stepSize;
-  } else if(direction == "left"){
-    xOffset = xOffset - stepSize;
-  }
-  draw();
-}
-
-
-// Hour 3 - Refactoring
-// Switch statements, short form mutators
+// Week 4 - Refactoring
+// If (else) statements
 function move(direction){
-  switch(direction){
-    case 'up':
-      if (yOffset > 0){
-        yOffset -= stepSize;
-      }
-      break;
-    case 'down':
-      if (yOffset < (playfield.height - boxSize)){
-        yOffset += stepSize;
-      }
-      break;
-    case 'right':
-      if (xOffset < (playfield.width - boxSize)){
-        xOffset += stepSize;
-      }
-      break;
-    case 'left':
-      if (xOffset > 0){
-        xOffset -= stepSize;
-      }
-      break;
-  }
+    if (direction == 'up' && yOffset > 0){
+      yOffset -= stepSize;
+    }
+    else if (direction == 'down' && yOffset < (playfield.height - boxSize)){
+      yOffset += stepSize;
+    }
+    else if (direction == 'right' && xOffset < (playfield.width - boxSize)){
+      xOffset += stepSize;
+    }
+    else if (direction == 'left' && xOffset > 0){
+      xOffset -= stepSize;
+    }
   draw();
 }
 
+// Week 3 - Interactive customization
+
+function setStepSize(value){
+  stepSize = parseInt(value);
+  }
+function setColor(){
+  var colorOption = document.getElementById('boxColor')
+  boxColor = colorOption.options[colorOption.selectedIndex].value;
+  draw();
+}
+
+// Week 2 - Drawing and Redrawing
 function draw(){
-  clear();
+  empty();
+  context.fillStyle = boxColor;
   context.fillRect(xOffset,yOffset,boxSize,boxSize);
 }
-function clear(){
+function empty(){
   context.clearRect(0, 0, playfield.width, playfield.height);
 }
 function reset(){

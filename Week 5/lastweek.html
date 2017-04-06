@@ -15,12 +15,20 @@
           <canvas id="theCanvas" width="500" height="300"></canvas>
         </td>
         <td class="controls">
-          <button id="up" onclick="clickMove(this);"><i class="arrow up"></i></button><br/>
-          <button id="left" onclick="clickMove(this);"><i class="arrow left"></i></button><button id="right" onclick="clickMove(this);"><i class="arrow right"></i></button><br/>
-          <button id="down" onclick="clickMove(this);"><i class="arrow down"></i></button>
+          <button id="up" onclick="move('up');"><i class="arrow up"></i></button><br/>
+          <button id="left" onclick="move('left');"><i class="arrow left"></i></button>
+          <button id="right" onclick="move('right');"><i class="arrow right"></i></button><br/>
+          <button id="down" onclick="move('down');"><i class="arrow down"></i></button>
         </td>
       </tr>
     </table>
+    <p>Box color: <select id="boxColor" onchange="setColor();">
+        <option selected value="black">Black</option>
+        <option value="blue">Blue</option>
+        <option value="aquamarine">Aquamarine</option>
+        <option value="maroon">Maroon</option>
+      </select></p>
+    <p>Step size: <input id="stepSize" type="number" value="5" onchange="setStepSize(this.value);"></input></p>
     <button id="reset" onclick="reset()">Reset</button>
     </p>
   </body>
