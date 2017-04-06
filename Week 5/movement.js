@@ -111,6 +111,10 @@ function clickMove(button){
   //move(button.id);
 }
 
+function setBoxSize(value){
+  boxSize = parseInt(value);
+  draw();
+}
 
 // Hour 1 - Refactoring
 function moveIf(direction){
@@ -206,3 +210,5 @@ function reset(){
   yOffset = playfield.height / 2;
   draw();
 }
+
+
