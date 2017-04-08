@@ -1,28 +1,32 @@
 <html lang="en">
 
-<head>
+  <head>
     <title>Week 5 - Canvas game</title>
     <link type="text/css" rel="stylesheet" href="default.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="movement.js"></script>
-</head>
+  </head>
 
-<body onload="init();">
+  <body onload="init();">
     <h1>Week 5 Game</h1>
     <p>
-        <table>
-            <tr>
-              <th class="counters">Timer <span id="timer" class="numbers"></span> s.</th>
-              <th class="counters">Score <span id="score" class="numbers"></span> pts.</th>
-            </tr>
-            <tr>
-                <td class="canvas" colspan="2">
-                    <canvas id="theCanvas" width="600" height="400"></canvas>
-                </td>
-            </tr>
-        </table>
-        <button id="start" onclick="startGame();">Start</button>
+    <table>
+      <tr>
+        <th class="counters">Timer <span id="timer" class="numbers"></span> s.</th>
+        <th class="counters">Score <span id="score" class="numbers"></span> pts.</th>
+      </tr>
+      <tr>
+        <td class="canvas" colspan="2">
+          <canvas id="theCanvas" width="600" height="400"></canvas>
+        </td>
+      </tr>
+    </table>
+    <button id="start" onclick="startGame();">Start</button>
     </p>
-</body>
+    <p>
+      Box Size:
+      <input id="boxSize" type="number" value="5" onchange="setBoxSize(this.value);"></input>
+      </p>
+  </body>
 
 </html>

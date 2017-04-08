@@ -1,0 +1,41 @@
+<html lang="en">
+
+  <head>
+    <title>Week 4 - Canvas movement</title>
+    <link type="text/css" rel="stylesheet" href="default.css"/>
+    <script src="lastweek.js"></script>
+  </head>
+
+  <body onload="init();">
+    <h1>Gametime!</h1>
+    <p>
+    <table>
+      <tr>
+        <td class="canvas">
+          <canvas id="theCanvas" width="500" height="300"></canvas>
+        </td>
+        <td class="controls">
+          <button id="up" onclick="move('up');"><i class="arrow up"></i></button><br/>
+          <button id="left" onclick="move('left');"><i class="arrow left"></i></button>
+          <button id="right" onclick="move('right');"><i class="arrow right"></i></button><br/>
+          <button id="down" onclick="move('down');"><i class="arrow down"></i></button>
+        </td>
+      </tr>
+    </table>
+    <p>Box color: 
+      <select id="boxColor" onchange="setColor();">
+        <option selected value="black">Black</option>
+        <option value="blue">Blue</option>
+        <option value="aquamarine">Aquamarine</option>
+        <option value="maroon">Maroon</option>
+      </select>
+    </p>
+    <p>Step size:
+      <input id="stepSize" type="number" value="5" onchange="setStepSize(this.value);"></input>
+    </p>
+    <p>
+      <button id="reset" onclick="reset()">Reset</button>
+    </p>
+  </body>
+
+</html>
