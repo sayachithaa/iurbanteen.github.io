@@ -4,19 +4,27 @@ var yOffset;
 var playfield;
 var context;
 var stepSize = 10;
-var boxSize = 20;
+var boxSize = 50;
 var gameLength = 30; // seconds
 var counter;
 var currentScore;
 var dots = [],
     dotCount = 20,
-    dotSize = 4;
+    dotSize = 30;
 var started = false;
 var gameEndSound;
+
+var food_img;
+var character;
 
 function init(){
   playfield = document.getElementById('theCanvas');
   context = playfield.getContext("2d");
+  food_img = new Image();
+  food_img.src = 'food008.gif';
+  character = new Image()
+  character.src = 'ufo-2.gif';
+
   initListeners();
   initValues();
   gameEndSound = new Audio("metroid.wav");
@@ -42,7 +50,8 @@ function drawDots(){
   for(var count=0; count < dots.length; count++){
     var currentDot = dots[count];
     //console.log(`Draw at (${currentDot.x}, ${currentDot.y})`);
-    context.fillRect(currentDot.x,currentDot.y,dotSize,dotSize);
+    //context.fillRect(currentDot.x,currentDot.y,dotSize,dotSize);
+    context.drawImage(food_img, currentDot.x,currentDot.y, dotSize, dotSize)
   }
 }
 
@@ -199,7 +208,8 @@ function draw(){
   clear();
   drawDots();
   context.fillStyle = "#000000";
-  context.fillRect(xOffset,yOffset,boxSize,boxSize);
+  // context.fillRect(xOffset,yOffset,boxSize,boxSize);
+  context.drawImage(character, xOffset, yOffset, boxSize, boxSize);
 
 }
 function clear(){
