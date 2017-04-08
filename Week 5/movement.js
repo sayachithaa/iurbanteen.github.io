@@ -14,32 +14,40 @@ var dots = [],
 var started = false;
 var gameEndSound;
 
-var food_img;
+var food;
 var character;
+var background;
+var title;
 
 function init(){
   playfield = document.getElementById('theCanvas');
   context = playfield.getContext("2d");
-  food_img = new Image();
-  food_img.src = 'food008.gif';
-  character = new Image()
-  character.src = 'ufo-2.gif';
 
   initListeners();
   initValues();
-  gameEndSound = new Audio("metroid.wav");
-  //makeDots();
-  reset();
+  gameEndSound = new Audio("bubbles.wav");
+  // makeDots();
+  // reset();
+  food = new Image();
+  food.src = 'food008.gif';
+  title = new Image();
+  title.src = 'shipwreck.jpg';
+  background = new Image();
+  background.src = 'underwater.jpeg';
+  character = new Image();
+  character.src = 'ufo-2.gif';
+  context.drawImage(title, 0, 0, playfield.width, playfield.height);
 
 }
 
+
 function makeDots(){
   for(var i=0; i < dotCount; i++){
-    var x = Math.floor(Math.random()*playfield.width),
-        y = Math.floor(Math.random()*playfield.height);
+    var randomX = Math.floor(Math.random()*playfield.width);
+    var randomY = Math.floor(Math.random()*playfield.height);
     dots.push({
-        x: x,
-        y: y
+        x: randomX,
+        y: randomY
       });
     //console.log(`Dot at (${x}, ${y})`);
   }
@@ -51,7 +59,7 @@ function drawDots(){
     var currentDot = dots[count];
     //console.log(`Draw at (${currentDot.x}, ${currentDot.y})`);
     //context.fillRect(currentDot.x,currentDot.y,dotSize,dotSize);
-    context.drawImage(food_img, currentDot.x,currentDot.y, dotSize, dotSize)
+    context.drawImage(food, currentDot.x,currentDot.y, dotSize, dotSize)
   }
 }
 
@@ -214,6 +222,7 @@ function draw(){
 }
 function clear(){
   context.clearRect(0, 0, playfield.width, playfield.height);
+  context.drawImage(background, 0, 0, playfield.width, playfield.height);
 }
 function reset(){
   xOffset = playfield.width / 2;
