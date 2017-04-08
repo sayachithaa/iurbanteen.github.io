@@ -7,6 +7,11 @@ var stepSize = 10;
 var boxSize = 20;
 var boxColor = "black";
 
+var food;
+var foodSize = 30;
+var foodImage;
+
+
 // Initialize --- when is this function called?
 function init(){
   // Assign values to global convenience variables
@@ -15,11 +20,46 @@ function init(){
 
   // Call functions
   initListeners();
+  initValues();
   resetBox();
   draw();
 }
 
+//////////////////////
+// Week 5 - Arrays! //
+//////////////////////
 
+
+function makeFood(){
+  
+}
+
+function drawFood(){
+
+}
+
+function initValues(){
+}
+
+function startGame(){
+}
+
+
+function runTimer(){
+  var interval = setInterval(function() {
+    if (counter >0){
+      tickClock();
+      if (counter == 1) gameEndSound.play(); // play sound with 1 sec. remaining
+    } else {
+      clearInterval(interval);
+      started = false;
+    }
+  },1000);
+}
+function tickClock(){
+  counter -= 1;
+  $("#timer").text(counter);
+}
 //////////////////////////
 // Week 4 - Refactoring //
 // If (else) statements //

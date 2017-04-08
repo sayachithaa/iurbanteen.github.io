@@ -92,7 +92,6 @@ function keyEventHandler(event){
 function startGame(){
   currentScore = 0;
   $('#score').text(currentScore);
-  dots = [];
   makeDots();
   reset();
 
