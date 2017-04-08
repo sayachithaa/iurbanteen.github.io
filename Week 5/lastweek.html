@@ -22,14 +22,19 @@
         </td>
       </tr>
     </table>
-    <p>Box color: <select id="boxColor" onchange="setColor();">
+    <p>Box color: 
+      <select id="boxColor" onchange="setColor();">
         <option selected value="black">Black</option>
         <option value="blue">Blue</option>
         <option value="aquamarine">Aquamarine</option>
         <option value="maroon">Maroon</option>
-      </select></p>
-    <p>Step size: <input id="stepSize" type="number" value="5" onchange="setStepSize(this.value);"></input></p>
-    <button id="reset" onclick="reset()">Reset</button>
+      </select>
+    </p>
+    <p>Step size:
+      <input id="stepSize" type="number" value="5" onchange="setStepSize(this.value);"></input>
+    </p>
+    <p>
+      <button id="reset" onclick="reset()">Reset</button>
     </p>
   </body>
 
