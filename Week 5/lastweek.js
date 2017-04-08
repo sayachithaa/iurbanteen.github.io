@@ -1,4 +1,4 @@
-
+// Initialize Global variables.
 var xOffset;
 var yOffset;
 var playfield;
@@ -7,33 +7,45 @@ var stepSize = 10;
 var boxSize = 20;
 var boxColor = "black";
 
+// Initialize --- when is this function called?
 function init(){
+  // Assign values to global convenience variables
   playfield = document.getElementById('theCanvas');
   context = playfield.getContext("2d");
+
+  // Call functions
   initListeners();
-  reset();
+  resetBox();
+  draw();
 }
 
+
+//////////////////////////
+// Week 4 - Refactoring //
+// If (else) statements //
+//////////////////////////
+
+// Listen for key press events
 function initListeners(){
   document.onkeydown = keyEventHandler;
   //window.addEventListener('onkeydown', keyEventHandler, false);
 }
+
+
+// Translate even code into movement direction and move
 function keyEventHandler(event){
-  switch(event.keyCode){
-    case 38: move('up');
-      break;
-    case 39: move('right');
-      break;
-    case 40: move('down');
-      break;
-    case 37: move('left');
-      break;
+  if (event.keyCode == 38) {
+    move('up');
+  } else if (event.keyCode == 39) {
+    move('right');
+  } else if (event.keyCode == 40) {
+    move('down');
+  } else if (event.keyCode == 37) {
+    move('left');
   }
 }
 
 
-// Week 4 - Refactoring
-// If (else) statements
 function move(direction){
     if (direction == 'up' && yOffset > 0){
       yOffset -= stepSize;
@@ -50,28 +62,42 @@ function move(direction){
   draw();
 }
 
-// Week 3 - Interactive customization
+///////////////////////////////
+//        Week 3             //
+// Interactive customization //
+///////////////////////////////
 
+// Changes number of steps box takes with each 'move'
 function setStepSize(value){
   stepSize = parseInt(value);
   }
+
+
+// Sets box color to color selected in 'boxColor' dropdown HTML element
 function setColor(){
   var colorOption = document.getElementById('boxColor')
   boxColor = colorOption.options[colorOption.selectedIndex].value;
   draw();
 }
 
-// Week 2 - Drawing and Redrawing
+///////////////////////////////
+// Week 2 - Drawing the Game //
+///////////////////////////////
+
+// Draw current state of game.
 function draw(){
-  empty();
-  context.fillStyle = boxColor;
-  context.fillRect(xOffset,yOffset,boxSize,boxSize);
+  empty(); // clear canvas
+  context.fillStyle = boxColor; // change our paintbrush color
+  context.fillRect(xOffset,yOffset,boxSize,boxSize); // draw box
 }
+
+// Clear canvas
 function empty(){
   context.clearRect(0, 0, playfield.width, playfield.height);
 }
-function reset(){
+
+// Move box to middle of canvas
+function resetBox(){
   xOffset = playfield.width / 2;
   yOffset = playfield.height / 2;
-  draw();
 }
