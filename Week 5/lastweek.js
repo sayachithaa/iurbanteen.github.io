@@ -4,10 +4,10 @@ var yOffset;
 var playfield;
 var context;
 var stepSize = 10;
-var boxSize = 20;
+var boxSize = 40;
 var boxColor = "black";
-
-var food;
+var foodAmount = 25;
+var food = [];
 var foodSize = 30;
 var foodImage;
 
@@ -17,7 +17,9 @@ function init(){
   // Assign values to global convenience variables
   playfield = document.getElementById('theCanvas');
   context = playfield.getContext("2d");
-
+  foodImage = new Image();
+  foodImage.src = 'food008.gif';
+  makeFood();
   // Call functions
   initListeners();
   initValues();
@@ -31,11 +33,33 @@ function init(){
 
 
 function makeFood(){
-  
+    for(var i=0; i < foodAmount; i++){
+      var randomX = Math.floor(Math.random()*playfield.width);
+      var randomY = Math.floor(Math.random()*playfield.height);
+      console.log("Preparing Snack");
+      food.push({x: randomX, y: randomY});
+    }
 }
 
 function drawFood(){
+  for(var i=0; i < foodAmount; i++){
+    console.log("Drawing Dinner")
+    var currentFood = food[i];
+    console.log(`Draw at (${currentFood.x}, ${currentFood.y})`);
+    context.drawImage(foodImage, currentFood.x, currentFood.y, foodSize, foodSize);
+  }
+}
 
+function checkForFood() {
+  for (var i = 0; i < food.length; i++) {
+    console.log(`Check for dot at: (${foodX},${foodY})`);
+    var foodX = food[i].x, foodY = food[i].y;
+
+    if ( (foodX >= xOffset) && (foodX <= (xOffset + boxSize))
+      && (foodY >= yOffset) && (foodY <= (yOffset + boxSize))) {
+        food.splice(i,1);
+      }
+  }
 }
 
 function initValues(){
@@ -99,6 +123,7 @@ function move(direction){
     else if (direction == 'left' && xOffset > 0){
       xOffset -= stepSize;
     }
+  checkForFood();
   draw();
 }
 
@@ -129,6 +154,7 @@ function draw(){
   empty(); // clear canvas
   context.fillStyle = boxColor; // change our paintbrush color
   context.fillRect(xOffset,yOffset,boxSize,boxSize); // draw box
+  drawFood();
 }
 
 // Clear canvas
