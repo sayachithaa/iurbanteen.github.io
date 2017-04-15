@@ -1,0 +1,12 @@
+body {
+  font-family: sans-serif;
+}
+canvas#playfield {
+    background-image: url('background-640h.png');
+    background-repeat: repeat-x;
+}
+#buttonControllers{
+  width: 768px;
+  text-align: center;
+  
+}
