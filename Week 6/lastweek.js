@@ -11,19 +11,30 @@ var food = [];
 var foodSize = 30;
 var foodImage;
 
+var gameLength = 30;
+var counter;
+var currentScore;
+var started = false;
 
 // Initialize --- when is this function called?
 function init(){
   // Assign values to global convenience variables
   playfield = document.getElementById('theCanvas');
   context = playfield.getContext("2d");
+
+  /// initialize food
   foodImage = new Image();
   foodImage.src = 'food008.gif';
   makeFood();
-  // Call functions
+
+  // Call secondary init functions
   initListeners();
   initValues();
+
+  // set box location`
   resetBox();
+
+  // draw playfield
   draw();
 }
 
@@ -42,7 +53,7 @@ function makeFood(){
 }
 
 function drawFood(){
-  for(var i=0; i < foodAmount; i++){
+  for(var i=0; i < food.length; i++){
     console.log("Drawing Dinner")
     var currentFood = food[i];
     console.log(`Draw at (${currentFood.x}, ${currentFood.y})`);
@@ -62,6 +73,8 @@ function checkForFood() {
   }
 }
 
+// jQuery tip:
+// $("#timer") is equivalent to document.getElementById('timer')
 function initValues(){
 }
 
@@ -80,10 +93,13 @@ function runTimer(){
     }
   },1000);
 }
+
 function tickClock(){
   counter -= 1;
   $("#timer").text(counter);
 }
+
+
 //////////////////////////
 // Week 4 - Refactoring //
 // If (else) statements //
