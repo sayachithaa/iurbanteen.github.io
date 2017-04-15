@@ -24,7 +24,7 @@ function init(){
 
   /// initialize food
   foodImage = new Image();
-  foodImage.src = 'food008.gif';
+  foodImage.src = 'media/food008.gif';
   makeFood();
 
   // Call secondary init functions
